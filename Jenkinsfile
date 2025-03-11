@@ -43,7 +43,13 @@ pipeline {
         stage('Docker Image Scan') {
             steps {
                 script {
-                    sh "trivy image --format table -o trivy-image-report.html sahana1712/fullstack:20250127"
+                    sh """
+                        docker run --rm \
+                            -v /var/run/docker.sock:/var/run/docker.sock \
+                            aquasec/trivy image --format table \
+                            -o trivy-image-report.html \
+                            sahana1712/fullstack:20250127
+                    """
                 }
             }
         }
