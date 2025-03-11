@@ -4,11 +4,11 @@ pipeline {
     environment {
         // Parametrizing the environment variables
         DOCKER_TAG = "${BUILD_NUMBER}"
-        IMAGE_NAME = "manojkrishnappa/fullstack"
-        AWS_REGION = "us-east-1"
-        SONAR_URL = 'http://3.84.96.251:9000/'  // SonarQube URL
+        IMAGE_NAME = "sahana1712/fullstack"
+        AWS_REGION = "ap-south-1"
+        SONAR_URL = 'http://43.205.212.23:9000//'  // SonarQube URL
         GIT_REPO_NAME = "complete-cicd-project-microdegree"
-        GIT_USER_NAME = "ManojKRISHNAPPA"
+        GIT_USER_NAME = "sahana17-dec"
     }
 
     tools {
@@ -19,7 +19,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/ManojKRISHNAPPA/complete-cicd-project-microdegree.git'
+                git branch: 'main', url: 'https://github.com/sahana17-dec/complete-ci-cd-project.git'
             }
         }
 
@@ -73,7 +73,7 @@ pipeline {
                         git config user.name "${GIT_USER_NAME}"
 
                         # Update deployment.yml with the correct Docker image version (Build Number)
-                        sed -i "s|image: manojkrishnappa/fullstack:[^ ]*|image: manojkrishnappa/fullstack:${DOCKER_TAG}|g" argocd-manifest/deployment.yml
+                        sed -i "s|image: sahana1712/fullstack:[^ ]*|image: sahana1712/fullstack:${DOCKER_TAG}|g" argocd-manifest/deployment.yml
 
                         # Commit and push the updated deployment file
                         git add argocd-manifest/deployment.yml
