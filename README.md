@@ -12,7 +12,7 @@ This is Simple ci-cd project
 
 ```yaml
 provider "aws" {
-    region = "us-east-1"
+    region = "ap-south-1"
     access_key = "xxx"
     secret_key = "xx"
 }
@@ -145,7 +145,7 @@ You can follow same procedure in the official  AWS document [Getting started wit
    
    example:
    eksctl create cluster --name microdegree \
-   --region us-east-1 \
+   --region ap-south-1 \
    --node-type t2.small \
     ```
    
